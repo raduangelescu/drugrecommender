@@ -4,7 +4,7 @@ from drugrecommender import DrugRecommender
 from lincsregulatedb import LincsRegulateDb
 import json
 import os
-
+#dataurl =  https://drive.google.com/file/d/1_wBX2dICqhK6PTBgVaO6nkwCezIU-cPJ/view?usp=sharing
 class DrugRecommenderConfig:
     def __init__(self, data_folder, num_disease_suggestions):
         self.data_folder = data_folder
