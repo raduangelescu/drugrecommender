@@ -30,7 +30,7 @@ class LincsRegulateDb:
 
     def load_gmt(self, file_name):
         return_dict = {}
-        with open(file_name) as tsv_file:
+        with open(file_name, encoding="utf8") as tsv_file:
             tsv_reader = csv.reader(tsv_file, delimiter="\t")
             for idx, row in enumerate(tsv_reader):
                 drug = row[0]
@@ -46,8 +46,12 @@ class LincsRegulateDb:
         
         if gene_name not in search_db:
             return []
+        gene_set = search_db[gene_name]
         
-        return search_db[gene_name]
+        if perturbation_type not in gene_set:
+            return []
+        
+        return gene_set[perturbation_type]
         
 def test():
     db = LincsRegulateDb("data/LINCS_L1000")
@@ -58,5 +62,3 @@ def test():
     print(f"drugs that perturbe the gene {gene_name_down} down {down}")
     print("--------------------")
     print(f"drugs that perturbe the gene {gene_name_up} up {up}")
-
-test()

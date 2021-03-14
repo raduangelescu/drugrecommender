@@ -8,7 +8,7 @@ class DrugGeneInteraction:
         DRUG_NAME_IDX = 7
         GENE_NAME_IDX = 0
         DRUG_CLAIM_NAME_IDX = 6
-        with open(self.filename) as tsvfile:
+        with open(self.filename, encoding="utf8") as tsvfile:
             tsvreader = csv.reader(tsvfile, delimiter="\t")
             for idx, line in enumerate(tsvreader):
                 if idx == 0:
@@ -35,12 +35,3 @@ class DrugGeneInteraction:
         if drug_name in self.db_drug_genes:
             return self.db_drug_genes[drug_name]
         return []
-
-def test():
-    db = DrugGeneInteraction("../data/drug_gene_interaction_db.tsv")
-    drugs = db.get_drugs_for_gene("CDK4")
-    print(f"drugs for CDK4 {drugs}")
-    genes = db.get_genes_for_drug("BISACODYL")
-    print(f"genes for BISACODYL {genes}")
-
-test()

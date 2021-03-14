@@ -48,24 +48,3 @@ class DisGenet:
         for row in result:
             return_list.append({'gene_name': row[0], 'score': row[1]})
         return sorted(return_list, key = lambda i: i['score'], reverse=True)
-
-def test_get_genes_from_disease(sqlite_file = 'data/disgenet_2020.db', disease_name = 'Abscess'):
-    dg = DisGenet(sqlite_file)
-    disease_genes = dg.get_disease_genes(disease_name)
-    print(disease_genes)
-    print(f"found {len(disease_genes)} genes associated to this disease")
-
-def test_get_diseases_from_gene(sqlite_file = 'data/disgenet_2020.db', gene_name = 'A2M'):
-    dg = DisGenet(sqlite_file)
-    genes_diseases = dg.get_gene_diseases(gene_name)
-    print(genes_diseases)
-    print(f"found {len(genes_diseases)} diseases associated to this gene")
-
-def test_get_possible_diseases_from_gene_list(sqlite_file = 'data/disgenet_2020.db', gene_list = ['A2M','A2MP1']):
-    dg = DisGenet(sqlite_file)
-    genes_diseases = dg.get_possible_diseases_from_gene_list(gene_list)
-    print(genes_diseases)
-
-# test_get_genes_from_disease()
-# test_get_diseases_from_gene()
-test_get_possible_diseases_from_gene_list()
