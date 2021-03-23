@@ -1,0 +1,7 @@
+requests==2.21.0
+rpy2==2.9.4
+numpy==1.15.1+mkl
+pandas==0.25.1
+bioinfokit==2.0.2
+GEOparse==2.0.3
+py7zr==0.14.1
